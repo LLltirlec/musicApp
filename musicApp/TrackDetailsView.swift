@@ -22,15 +22,15 @@ final class TrackDetailsView: UIView {
     @IBOutlet weak var nextButton: UIButton!
     
     private var durationMinuts: Float!
-    private var durationSeconds: Float {
+    private var durationSeconds: Int {
         
-        var minuts: Float = Float(Int(durationMinuts))
-        var seconds = durationMinuts - minuts
+        let minuts: Float = Float(Int(durationMinuts))
+        let seconds = durationMinuts - minuts
         
-        return minuts * 60 + seconds * 100
+        return Int(minuts * 60 + seconds * 100)
     }
     
-    private var seconds: Float = 0
+    private var seconds: Double = 0
     
     private var timer: Timer? = nil
     
@@ -116,25 +116,31 @@ extension TrackDetailsView {
     
     private func updateCurrentTimeLabel() {
         
-        if seconds >= durationSeconds {
+        if Int(seconds) >= durationSeconds {
             stopTrack()
             restartTimer()
         }
-        currentPlayTime.text = String("\(seconds)")
-//        if seconds < 10 {
-//            currentPlayTime.text = String(format: "0:0%0.0f", seconds)
-//        } else if seconds < 60 {
-//            currentPlayTime.text = String(format: "0:%0.0f", seconds)
-//        } else if seconds.truncatingRemainder(dividingBy: 60) < 10 {
-//            currentPlayTime.text = String(format: "%0.0f:0%0.0f", seconds / 60, seconds.truncatingRemainder(dividingBy: 60))
-//        } else {
-//            currentPlayTime.text = String(format: "%0.0f:%0.0f", seconds / 60, seconds.truncatingRemainder(dividingBy: 60))
-//        }
+        if seconds < 10 {
+            currentPlayTime.text = "0:0\(seconds.asString(style: .positional))"
+        } else if seconds < 60 {
+            currentPlayTime.text = "0:\(seconds.asString(style: .positional))"
+        } else {
+            currentPlayTime.text = seconds.asString(style: .positional)
+        }
     }
     
     private func updateSlider() {
-        let persent = seconds / durationSeconds
+        let persent = Float(seconds) / Float(durationSeconds)
         
         trackPlayProgres.setValue(persent, animated: true)
+    }
+}
+
+extension Double {
+    func asString(style: DateComponentsFormatter.UnitsStyle) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second, .nanosecond]
+        formatter.unitsStyle = style
+        return formatter.string(from: self) ?? ""
     }
 }
