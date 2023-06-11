@@ -52,6 +52,7 @@ final class TrackDetailsView: UIView {
         startTimer()
         enlargeTransformImage()
         durationMinuts = Float(trackDuratation.text ?? "0.0")
+        trackDuratation.text = String(format: "%0.2f", durationMinuts).replacingOccurrences(of: ".", with: ":")
     }
     
     @IBAction func hideView(_ sender: UIButton) {
@@ -68,6 +69,9 @@ final class TrackDetailsView: UIView {
         }
     }
     
+    @IBAction func trackPlayProgressSlider(_ sender: UISlider) {
+        seconds = Double(durationSeconds) * Double(trackPlayProgres.value)
+    }
 }
 
 

@@ -51,6 +51,9 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="NuD-jE-aGq"/>
                             </constraints>
+                            <connections>
+                                <action selector="trackPlayProgressSlider:" destination="8AM-6D-a1l" eventType="valueChanged" id="ZHd-MX-dcT"/>
+                            </connections>
                         </slider>
                         <stackView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="VW0-cL-mek">
                             <rect key="frame" x="0.0" y="504.33333333333331" width="361" height="20.333333333333314"/>
