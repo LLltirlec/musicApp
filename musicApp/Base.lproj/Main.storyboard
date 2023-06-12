@@ -116,17 +116,31 @@
             </objects>
             <point key="canvasLocation" x="16" y="-273"/>
         </scene>
-        <!--View Controller-->
+        <!--Developer-->
         <scene sceneID="t4c-XR-N2S">
             <objects>
                 <viewController id="i7n-ap-2b3" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pjc-uq-5bd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ефимов Евгений aka LLltirlec" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKQ-3U-RoI">
+                                <rect key="frame" x="16" y="171" width="361" height="72"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="28"/>
+                                <color key="textColor" red="1" green="0.028078071959999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" systemColor="labelColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rep-sX-UAh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wKQ-3U-RoI" firstAttribute="top" secondItem="rep-sX-UAh" secondAttribute="top" constant="16" id="6eh-G1-DMx"/>
+                            <constraint firstItem="wKQ-3U-RoI" firstAttribute="leading" secondItem="rep-sX-UAh" secondAttribute="leading" constant="16" id="P1Y-eU-h9q"/>
+                            <constraint firstAttribute="trailing" secondItem="wKQ-3U-RoI" secondAttribute="trailing" constant="16" id="aKZ-tM-pyP"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tJ9-vv-0nC"/>
+                    <navigationItem key="navigationItem" title="Developer" id="tJ9-vv-0nC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mur-d1-77g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -240,11 +254,20 @@
         <scene sceneID="a7H-kr-zKB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dUm-RL-EPF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="Item" id="HdT-rF-GhI"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Item" image="person.fill" catalog="system" id="HdT-rF-GhI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="0Hi-Ky-8NI">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
+                            <color key="textColor" red="1" green="0.028078071959999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="0.0031666671857237816" green="0.0031666664872318506" blue="0.0031666669528931379" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="1" vertical="-1"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -260,6 +283,10 @@
         <segue reference="a8B-uA-iXl"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
