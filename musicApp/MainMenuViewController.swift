@@ -7,13 +7,13 @@
 
 import UIKit
 
-class MainMenuViewController: UITableViewController {
+final class MainMenuViewController: UITableViewController {
 
     var music: [Music]!
+    var playList: [Music]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -107,8 +107,12 @@ class MainMenuViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let songsVC = segue.destination as? SongsTableViewController else { return }
-        songsVC.music = music
+        if let songsVC = segue.destination as? SongsTableViewController {
+            songsVC.music = music
+        } else if let playListVC = segue.destination as? PlayListViewController {
+            playListVC.playList = playList
+        } else { return }
     }
+    
     
 }

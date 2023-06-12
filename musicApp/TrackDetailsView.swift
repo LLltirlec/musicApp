@@ -29,8 +29,8 @@ final class TrackDetailsView: UIView {
     private var durationMinuts: Float!
     private var durationSeconds: Int {
         
-        let minuts: Float = Float(Int(durationMinuts))
-        let seconds = durationMinuts - minuts
+        let minuts: Float = Float(Int(durationMinuts ?? 0))
+        let seconds = durationMinuts ?? 0 - minuts
         
         return Int(minuts * 60 + seconds * 100)
     }

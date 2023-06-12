@@ -14,9 +14,9 @@
 		7C0621842A35428800C29042 /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0621832A35428800C29042 /* SongsTableViewController.swift */; };
 		7C0621862A35CCAF00C29042 /* TrackDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0621852A35CCAF00C29042 /* TrackDetailsView.swift */; };
 		7C06218B2A35F44400C29042 /* TrackDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C06218A2A35F44400C29042 /* TrackDetailsView.xib */; };
+		7C33ACA72A36B042004D1E1B /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33ACA62A36B042004D1E1B /* PlayListViewController.swift */; };
 		7CA0317A2A34A72300C5EAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA031792A34A72300C5EAF0 /* AppDelegate.swift */; };
 		7CA0317C2A34A72300C5EAF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0317B2A34A72300C5EAF0 /* SceneDelegate.swift */; };
-		7CA0317E2A34A72300C5EAF0 /* TrackDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0317D2A34A72300C5EAF0 /* TrackDetailsViewController.swift */; };
 		7CA031812A34A72300C5EAF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0317F2A34A72300C5EAF0 /* Main.storyboard */; };
 		7CA031832A34A72400C5EAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA031822A34A72400C5EAF0 /* Assets.xcassets */; };
 		7CA031862A34A72400C5EAF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA031842A34A72400C5EAF0 /* LaunchScreen.storyboard */; };
@@ -30,10 +30,10 @@
 		7C0621832A35428800C29042 /* SongsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
 		7C0621852A35CCAF00C29042 /* TrackDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsView.swift; sourceTree = "<group>"; };
 		7C06218A2A35F44400C29042 /* TrackDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackDetailsView.xib; sourceTree = "<group>"; };
+		7C33ACA62A36B042004D1E1B /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
 		7CA031762A34A72300C5EAF0 /* musicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = musicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA031792A34A72300C5EAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CA0317B2A34A72300C5EAF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7CA0317D2A34A72300C5EAF0 /* TrackDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsViewController.swift; sourceTree = "<group>"; };
 		7CA031802A34A72300C5EAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CA031822A34A72400C5EAF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CA031852A34A72400C5EAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -136,10 +136,10 @@
 		7CA031932A34A84C00C5EAF0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7CA0317D2A34A72300C5EAF0 /* TrackDetailsViewController.swift */,
 				7C06217F2A34CFF600C29042 /* MainMenuViewController.swift */,
 				7C0621812A34E41000C29042 /* TabBarController.swift */,
 				7C0621832A35428800C29042 /* SongsTableViewController.swift */,
+				7C33ACA62A36B042004D1E1B /* PlayListViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CA0317E2A34A72300C5EAF0 /* TrackDetailsViewController.swift in Sources */,
+				7C33ACA72A36B042004D1E1B /* PlayListViewController.swift in Sources */,
 				7C0621802A34CFF600C29042 /* MainMenuViewController.swift in Sources */,
 				7C0621842A35428800C29042 /* SongsTableViewController.swift in Sources */,
 				7C06217E2A34C29B00C29042 /* PlayList.swift in Sources */,
