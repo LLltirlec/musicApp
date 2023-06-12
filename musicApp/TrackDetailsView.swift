@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol GetNextTrack: AnyObject {
+    func switchToNextTrack() -> Music
+    func switchToPreviousTrack() -> Music
+}
+
 final class TrackDetailsView: UIView {
     
     @IBOutlet weak var trackImage: UIImageView!
@@ -36,6 +41,8 @@ final class TrackDetailsView: UIView {
     
     private var isPlay: Bool = true
     
+    weak var delegate: GetNextTrack?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -52,7 +59,7 @@ final class TrackDetailsView: UIView {
         startTimer()
         enlargeTransformImage()
         durationMinuts = Float(trackDuratation.text ?? "0.0")
-        trackDuratation.text = String(format: "%0.2f", durationMinuts).replacingOccurrences(of: ".", with: ":")
+//        trackDuratation.text = String(format: "%0.2f", durationMinuts).replacingOccurrences(of: ".", with: ":")
     }
     
     @IBAction func hideView(_ sender: UIButton) {
@@ -67,6 +74,20 @@ final class TrackDetailsView: UIView {
             enlargeTransformImage()
             startTimer()
         }
+    }
+    
+    
+    @IBAction func switchToPreviousTrackButton(_ sender: UIButton) {
+        guard let track = delegate?.switchToPreviousTrack() else { return }
+        loadTrackInfo(sender: track)
+        restartTimer()
+    }
+    
+    
+    @IBAction func switchToNextTrackButton(_ sender: UIButton) {
+        guard let track = delegate?.switchToNextTrack() else { return }
+        loadTrackInfo(sender: track)
+        restartTimer()
     }
     
     @IBAction func trackPlayProgressSlider(_ sender: UISlider) {
@@ -108,6 +129,7 @@ extension TrackDetailsView {
     
     private func restartTimer(){
         seconds = 0
+        trackPlayProgres.setValue(Float(seconds), animated: true)
     }
     
     private func stopTrack() {

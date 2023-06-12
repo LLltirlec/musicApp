@@ -49,6 +49,7 @@ class SongsTableViewController: UITableViewController {
         let window = view.window?.windowScene?.keyWindow
         guard let trackView = Bundle.main.loadNibNamed("TrackDetailsView", owner: self)?.first as? TrackDetailsView else { return }
         trackView.loadTrackInfo(sender: music[indexPath.row])
+        trackView.delegate = self
         window?.addSubview(trackView)
     }
     
@@ -89,10 +90,44 @@ class SongsTableViewController: UITableViewController {
     
     
     // MARK: - Navigation
-    
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+    }
+    */
+    
+}
+
+extension SongsTableViewController: GetNextTrack {
+    private func getTrack(isNext: Bool) -> IndexPath{
+        guard let indexPath = tableView.indexPathForSelectedRow else { return IndexPath(index: 0) }
+        tableView.deselectRow(at: indexPath, animated: true)
+        var nextIndexPath: IndexPath!
+        if isNext {
+            nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+            if nextIndexPath.row == music.count {
+                nextIndexPath.row = 0
+            }
+        } else {
+            nextIndexPath = IndexPath(row: indexPath.row - 1, section: indexPath.section)
+            if nextIndexPath.row == -1 {
+                nextIndexPath.row = music.count - 1
+            }
+        }
+        
+        tableView.selectRow(at: nextIndexPath, animated: true, scrollPosition: .none)
+        return nextIndexPath
+    }
+    
+    func switchToNextTrack() -> Music {
+        let indexPath = getTrack(isNext: true)
+        return music[indexPath.row]
+    }
+    
+    func switchToPreviousTrack() -> Music {
+        let indexPath = getTrack(isNext: false)
+        return music[indexPath.row]
     }
     
     
