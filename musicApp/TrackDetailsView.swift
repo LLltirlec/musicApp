@@ -50,29 +50,25 @@ final class TrackDetailsView: UIView {
         trackImage.transform = CGAffineTransform(scaleX: scale, y: scale)
         trackImage.layer.cornerRadius = 7
         playButton.setTitle("Pause", for: .normal)
+        enlargeTransformImage()
+        startTimer()
     }
     
     
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        startTimer()
-        enlargeTransformImage()
-        durationMinuts = Float(trackDuratation.text ?? "0.0")
-//        trackDuratation.text = String(format: "%0.2f", durationMinuts).replacingOccurrences(of: ".", with: ":")
     }
     
     @IBAction func hideView(_ sender: UIButton) {
+        self.removeFromSuperview()
     }
     
     @IBAction func playButton(_ sender: UIButton) {
         if isPlay {
             stopTrack()
         } else {
-            isPlay = true
-            playButton.setTitle("Pause", for: .normal)
-            enlargeTransformImage()
-            startTimer()
+            startTrack()
         }
     }
     
@@ -80,14 +76,18 @@ final class TrackDetailsView: UIView {
     @IBAction func switchToPreviousTrackButton(_ sender: UIButton) {
         guard let track = delegate?.switchToPreviousTrack() else { return }
         loadTrackInfo(sender: track)
+        stopTrack()
         restartTimer()
+        startTrack()
     }
     
     
     @IBAction func switchToNextTrackButton(_ sender: UIButton) {
         guard let track = delegate?.switchToNextTrack() else { return }
         loadTrackInfo(sender: track)
+        stopTrack()
         restartTimer()
+        startTrack()
     }
     
     @IBAction func trackPlayProgressSlider(_ sender: UISlider) {
@@ -101,7 +101,8 @@ extension TrackDetailsView {
     func loadTrackInfo(sender: Music) {
         trackName.text = sender.track
         artist.text = sender.artist
-        trackDuratation.text = String(format: "%0.2f", sender.duratation)
+        trackDuratation.text = String(format: "%0.2f", sender.duratation).replacingOccurrences(of: ".", with: ":")
+        durationMinuts = Float(sender.duratation)
         trackImage.image = UIImage(named: sender.artist)
     }
     
@@ -121,9 +122,9 @@ extension TrackDetailsView {
     
     private func startTimer(){
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ tempTimer in
-            self.seconds = self.seconds + 1
-            self.updateCurrentTimeLabel()
-            self.updateSlider()
+            self.seconds += 1
+                self.updateCurrentTimeLabel()
+                self.updateSlider()
         }
     }
     
@@ -140,11 +141,21 @@ extension TrackDetailsView {
         timer = nil
     }
     
+    private func startTrack() {
+        isPlay = true
+        playButton.setTitle("Pause", for: .normal)
+        enlargeTransformImage()
+        startTimer()
+    }
+    
     private func updateCurrentTimeLabel() {
         
         if Int(seconds) >= durationSeconds {
+            guard let track = delegate?.switchToNextTrack() else { return }
+            loadTrackInfo(sender: track)
             stopTrack()
             restartTimer()
+            startTrack()
         }
         if seconds < 10 {
             currentPlayTime.text = "0:0\(seconds.asString(style: .positional))"
